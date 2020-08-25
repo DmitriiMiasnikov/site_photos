@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.scss';
+import Header from './components/Header/HeaderContainer';
+import Footer from './components/Footer/FooterContainer';
+import MainPage from './components/MainPage/MainPageContainer';
+import ArchPage from './components/ArchPage/ArchPageContainer';
+import NaturePage from './components/NaturePage/NaturePageContainer';
+import AboutMePage from './components/AboutmePage/AboutmePageContainer';
+import { Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app}>
+      <Header />
+      <div className={styles.main}>
+        <Route path={'/main'} render={() => <MainPage />} />
+        <Route path={'/nature'} render={() => <NaturePage />} />
+        <Route path={'/arch'} render={() => <ArchPage />} />
+        <Route path={'/aboutme'} render={() => <AboutMePage />} />
+      </div>
+      <Footer />
     </div>
   );
 }
