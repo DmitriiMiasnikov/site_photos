@@ -12,9 +12,10 @@ const ArchPage = () => {
     const [activePhoto, setActivePhoto] = useState(1);
     const [photoOffest, setPhotoOffest] = useState(-750);
     const [shouldSlide, setshouldSlide] = useState(false);
+    const [showOverlay, setShowOverlay] = useState(false);
     const slidePhoto = async (item) => {
         if (activePhoto === item) {
-            return
+            setShowOverlay(true)
         } else {
             setshouldSlide(true)
             if (item > activePhoto) {
@@ -34,8 +35,8 @@ const ArchPage = () => {
                     {
                         archPhotos.map((el, i) => {
                             return <img className={classnames(styles.photo, {
-                                [styles.active]: activePhoto === i,
                                 [styles.slide]: activePhoto === i && shouldSlide,
+                                [styles.animation]: shouldSlide,
                             })}
                                 src={el}
                                 onClick={() => slidePhoto(i)}
@@ -51,6 +52,11 @@ const ArchPage = () => {
                 <div className={styles.text}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
                 </div>
+            </div>
+            <div className={classnames(styles.overlayWrapper, { [styles.hide]: !showOverlay })}>
+                <div className={styles.overlay} onClick={() => setShowOverlay(false)}></div>
+                <div className={styles.picture}
+                    style={{ 'background': `url(${archPhotos[activePhoto]}) no-repeat 100% / 100%` }}></div>
             </div>
         </div>
     )
