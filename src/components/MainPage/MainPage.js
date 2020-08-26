@@ -36,6 +36,13 @@ const MainPage = (props) => {
                         ></div>
                     })
                 }
+                <div className = {styles.wrapperPoints}>
+                {
+                    mainPhotos.map((el, i) => {
+                        return <div className = {classnames(styles.point, { [styles.active]: i === activePhoto})}></div>
+                    })
+                }
+                </div>
             </div>
             <div className = {styles.description}>
                 <div className = {styles.innerBlock}>

@@ -28,6 +28,25 @@
                 opacity: 0;
             }
         }
+        .wrapperPoints {
+            position: absolute;
+            display: flex;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20px;
+            z-index: 3;
+            .point {
+                width: 20px;
+                height: 20px;
+                margin: 0 10px;
+                border-radius: 50%;
+                transition: .3s background-color;
+                background-color: rgb(197, 197, 197);
+                &.active {
+                    background-color: rgb(61, 61, 61);
+                }
+            }
+        }
     }
     .description {
         position: absolute;
