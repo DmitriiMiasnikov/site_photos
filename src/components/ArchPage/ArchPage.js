@@ -9,14 +9,17 @@ const archPhotos = [
     'https://img5.goodfon.ru/original/2560x1440/3/d3/piazza-del-campo-torre-del-mangia-siena-tuscany-italy-piatst.jpg'
 ]
 const ArchPage = () => {
-    const [activePhoto, setActivePhoto] = useState(0);
-    const [activePhotoWidth, setActivePhotoWidth] = useState(0);
+    const [activePhoto, setActivePhoto] = useState(1);
+    const [photoOffest, setPhotoOffest] = useState(-750);
     const [shouldSlide, setshouldSlide] = useState(false);
     const slidePhoto = async (item) => {
         if (activePhoto === item) {
             return
         } else {
             setshouldSlide(true)
+            if (item > activePhoto) {
+                setPhotoOffest(photoOffest - 950)
+            } else setPhotoOffest(photoOffest + 950)
             await new Promise(() => setTimeout(() => {
                 setshouldSlide(false)
                 setActivePhoto(item);
@@ -27,7 +30,7 @@ const ArchPage = () => {
     return (
         <div className={styles.archPage}>
             <div className={styles.blockForPhoto}>
-                <div className={styles.photoWrapper} styles={{ left: activePhotoWidth }}>
+                <div className={styles.photoWrapper} style={{ left: photoOffest }}>
                     {
                         archPhotos.map((el, i) => {
                             return <img className={classnames(styles.photo, {

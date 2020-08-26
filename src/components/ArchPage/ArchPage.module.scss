@@ -10,10 +10,12 @@
             height: inherit;
             top: 0px;
             white-space: nowrap;
+            transition: .5s left ease-in-out;
             .photo {
                 display: inline-block;
                 height: inherit;
                 top: 0px;
+                width: 950px;
                 z-index: 1;
                 margin: 0 4px;
                 transition: .5s top;
