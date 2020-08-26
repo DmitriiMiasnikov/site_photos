@@ -16,6 +16,7 @@ const menuReducer = (state = stateDefault, action) => {
                ...state,
            }
         }
+        default: break;
     }
     return state;
 }

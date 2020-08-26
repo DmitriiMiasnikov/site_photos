@@ -27,8 +27,8 @@ const MainPage = (props) => {
                         return <div className = {classnames(styles.photo, {
                             [styles.active]: activePhoto === i,
                             [styles.slide]: activePhoto === i && shouldSlide,
-                            [styles.hide]: i !== activePhoto && i !== activePhoto + 1 && activePhoto !== mainPhotos.length - 1 || 
-                                activePhoto === mainPhotos.length - 1 && i !== mainPhotos.length - 1 && i !== 0
+                            [styles.hide]: (i !== activePhoto && i !== activePhoto + 1 && activePhoto !== mainPhotos.length - 1) || 
+                                (activePhoto === mainPhotos.length - 1 && i !== mainPhotos.length - 1 && i !== 0)
                          })}
                         style={{ 'background': `url(${el}) 50% center / cover no-repeat` }}
                         onClick = {() => slidePhoto()}

@@ -5,7 +5,7 @@ import aboutme from './../../assets/img/aboutme.jpg';
 const AboutmePage = () => {
     return (
         <div className = {styles.aboutme}>
-            <img src={aboutme} className = {styles.image}></img>
+            <img src={aboutme} className = {styles.image} alt={'my_photo'}></img>
             <div className = {styles.textAboutMe}>
                 <div className = {styles.title}>About me</div>
                 <div className = {styles.text}>

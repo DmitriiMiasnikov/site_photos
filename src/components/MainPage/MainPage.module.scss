@@ -12,8 +12,12 @@
             left: 0px;
             top: 0px;
             z-index: 1;
-            transition: .5s top;
+            transition: .5s top ease-in-out;
+            &:hover {
+                cursor: pointer;
+            }
             &.slide {
+                pointer-events: none;
                 top: 750px;
             }
             &.active {

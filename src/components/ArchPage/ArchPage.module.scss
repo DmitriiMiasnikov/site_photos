@@ -1,0 +1,52 @@
+.archPage {
+    .blockForPhoto {
+        overflow: hidden;
+        height: 600px;
+        position: relative;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgb(124, 124, 124);
+        .photoWrapper {
+            position: absolute;
+            height: inherit;
+            top: 0px;
+            white-space: nowrap;
+            .photo {
+                display: inline-block;
+                height: inherit;
+                top: 0px;
+                z-index: 1;
+                margin: 0 4px;
+                transition: .5s top;
+                &:hover {
+                    cursor: pointer;
+                }
+                &.slide {
+                    left: 750px;
+                }
+                &.active {
+                    z-index: 2;
+                }
+                &.hide {
+                    visibility: hidden;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+    .description {
+        margin: 30px 0;
+        font-family: serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .title {
+            font-size: 26px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .text {
+            width: 800px;
+            font-size: 20px;
+        }
+    }
+}
