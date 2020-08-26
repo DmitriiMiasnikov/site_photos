@@ -12,7 +12,7 @@
             left: 0px;
             top: 0px;
             z-index: 1;
-            transition: .3s top;
+            transition: .5s top;
             &.slide {
                 top: 750px;
             }
@@ -22,6 +22,34 @@
             &.hide {
                 visibility: hidden;
                 opacity: 0;
+            }
+        }
+    }
+    .description {
+        position: absolute;
+        display: grid;
+        user-select: none;
+        width: 200px;
+        height: 200px;
+        right: 150px;
+        top: 100px;
+        background-color: white;
+        z-index: 3;
+        color: rgb(124, 124, 124);
+        .innerBlock {
+            border: 1px solid rgb(124, 124, 124);
+            margin: 5px;
+            box-sizing: border-box;
+            .name {
+                margin-top: 20px;
+                line-height: 33px;
+                font-size: 26px;
+            }
+            .proff {
+                margin-top: 30px;
+                line-height: 33px;
+                font-size: 20px;
+                font-style: italic;
             }
         }
     }
