@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './NaturePage.module.scss';
 import classnames from 'classnames';
 const naturePhotos = [
@@ -11,10 +11,23 @@ const naturePhotos = [
 ]
 
 const NaturePage = () => {
+    const [sceneWidth, setSceneWidth] = useState(0);
+    const [pictureWidth, setPictureWidth] = useState(0);
+    const sceneRef = useRef(null);
+    const pictureRef = useRef(null);
     const [activePhoto, setActivePhoto] = useState(1);
     const [photoOffest, setPhotoOffest] = useState(-750);
     const [shouldSlide, setshouldSlide] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
+    useEffect(() => {
+        setSceneWidth(sceneRef.current.offsetWidth)
+    }, [])
+    useEffect(() => {
+        setPictureWidth(pictureRef.current.offsetWidth)
+    }, [])
+    useEffect(() => {
+        setPhotoOffest(((sceneWidth - pictureWidth) / 2) - pictureWidth)
+    }, [pictureWidth])
     const slidePhoto = async (item) => {
         if (activePhoto === item) {
             setShowOverlay(true)
@@ -29,10 +42,9 @@ const NaturePage = () => {
             }, 500))
         }
     }
-    if (activePhoto === naturePhotos.length) setActivePhoto(0)
     return (
         <div className={styles.naturePage}>
-            <div className={styles.blockForPhoto}>
+            <div className={styles.blockForPhoto} ref = {sceneRef}>
                 <div className={styles.photoWrapper} style={{ left: photoOffest }}>
                     {
                         naturePhotos.map((el, i) => {
@@ -44,6 +56,7 @@ const NaturePage = () => {
                                 onClick={() => slidePhoto(i)}
                                 key={i}
                                 alt={'acrhitecture_photo'}
+                                ref = {activePhoto === i ? pictureRef : null}
                             ></img>
                         })
                     }

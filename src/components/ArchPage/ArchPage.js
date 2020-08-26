@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './ArchPage.module.scss';
 import classnames from 'classnames';
 const archPhotos = [
@@ -9,10 +9,23 @@ const archPhotos = [
     'https://img5.goodfon.ru/original/2560x1440/3/d3/piazza-del-campo-torre-del-mangia-siena-tuscany-italy-piatst.jpg'
 ]
 const ArchPage = () => {
+    const [sceneWidth, setSceneWidth] = useState(0);
+    const [pictureWidth, setPictureWidth] = useState(0);
+    const sceneRef = useRef(null);
+    const pictureRef = useRef(null);
     const [activePhoto, setActivePhoto] = useState(1);
     const [photoOffest, setPhotoOffest] = useState(-750);
     const [shouldSlide, setshouldSlide] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
+    useEffect(() => {
+        setSceneWidth(sceneRef.current.offsetWidth)
+    }, [])
+    useEffect(() => {
+        setPictureWidth(pictureRef.current.offsetWidth)
+    }, [])
+    useEffect(() => {
+        setPhotoOffest(((sceneWidth - pictureWidth) / 2) - pictureWidth)
+    }, [pictureWidth])
     const slidePhoto = async (item) => {
         if (activePhoto === item) {
             setShowOverlay(true)
@@ -30,7 +43,7 @@ const ArchPage = () => {
     if (activePhoto === archPhotos.length) setActivePhoto(0)
     return (
         <div className={styles.archPage}>
-            <div className={styles.blockForPhoto}>
+            <div className={styles.blockForPhoto} ref = {sceneRef}>
                 <div className={styles.photoWrapper} style={{ left: photoOffest }}>
                     {
                         archPhotos.map((el, i) => {
@@ -41,7 +54,8 @@ const ArchPage = () => {
                                 src={el}
                                 onClick={() => slidePhoto(i)}
                                 key={i}
-                                alt={'acrhitecture_photo'}
+                                alt={'nature_photo'}
+                                ref = {activePhoto === i ? pictureRef : null}
                             ></img>
                         })
                     }
