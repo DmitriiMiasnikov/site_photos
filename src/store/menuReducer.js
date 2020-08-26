@@ -1,12 +1,12 @@
 const SDFSDF = 'SDFSDF';
 
 const stateDefault = {
-    links: [
-        'Main page',
-        'Nature',
-        'Architecture',
-        'About me'
-    ]
+    links: {
+        main: 'Main page',
+        nature: 'Nature',
+        arch: 'Architecture',
+        aboutme: 'About me'
+    }
 }
 
 const menuReducer = (state = stateDefault, action) => {
