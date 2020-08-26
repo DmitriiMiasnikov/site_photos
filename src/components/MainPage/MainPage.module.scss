@@ -1,7 +1,6 @@
 .mainPage {
-    height: 750px;
     .blockForPhoto {
-        position: absolute;
+        position: relative;
         overflow: hidden;
         height: 750px;
         width: 100%;
@@ -49,6 +48,22 @@
         }
     }
     .description {
+        margin: 30px 0;
+        font-family: serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .title {
+            font-size: 26px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .text {
+            width: 800px;
+            font-size: 20px;
+        }
+    }
+    .square {
         position: absolute;
         display: grid;
         user-select: none;

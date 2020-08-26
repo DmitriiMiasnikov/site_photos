@@ -39,12 +39,18 @@ const MainPage = (props) => {
                 <div className = {styles.wrapperPoints}>
                 {
                     mainPhotos.map((el, i) => {
-                        return <div className = {classnames(styles.point, { [styles.active]: i === activePhoto})}></div>
+                        return <div className = {classnames(styles.point, { [styles.active]: i === activePhoto})} key = {i}></div>
                     })
                 }
                 </div>
             </div>
-            <div className = {styles.description}>
+            <div className={styles.description}>
+                <div className={styles.title}> Architecture</div>
+                <div className={styles.text}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                </div>
+            </div>
+            <div className = {styles.square}>
                 <div className = {styles.innerBlock}>
                 <div className = {styles.name}>Dmitrii<br></br>Miasnikov</div>
                 <div className = {styles.proff}>Frontend</div>
