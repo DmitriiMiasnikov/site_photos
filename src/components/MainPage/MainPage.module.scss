@@ -1,0 +1,28 @@
+.mainPage {
+    height: 750px;
+    .blockForPhoto {
+        position: absolute;
+        overflow: hidden;
+        height: 750px;
+        width: 100%;
+        .photo {
+            position: absolute;
+            height: 750px;
+            width: 100%;
+            left: 0px;
+            top: 0px;
+            z-index: 1;
+            transition: .3s top;
+            &.slide {
+                top: 750px;
+            }
+            &.active {
+                z-index: 2;
+            }
+            &.hide {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+    }
+}

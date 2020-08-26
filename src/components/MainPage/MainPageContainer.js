@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import MainPage from './MainPage';
 
 const MainPageContainer = (props) => {
+    
     return (
         <MainPage {...props} />
     )

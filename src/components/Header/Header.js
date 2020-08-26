@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 const Header = (props) => {
     return (
         <div className={styles.header}>
+            <div className = {styles.links}>
             {
                 Object.keys(props.links).map((el, i) => {
                     return <NavLink to={`/${el}`} activeClassName={styles.active} className={styles.link} key={i}>
@@ -12,6 +13,7 @@ const Header = (props) => {
                     </NavLink>
                 })
             }
+            </div>
         </div>
     )
 }
